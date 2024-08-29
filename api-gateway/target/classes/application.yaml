@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: task-service
+          uri: lb://task-service
+          predicates:
+            - Path=/tasks/**
+        - id: resource-service
+          uri: lb://resource-service
+          predicates:
+            - Path=/resources/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
